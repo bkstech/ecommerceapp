@@ -17,6 +17,7 @@ namespace API
             using var scope = host.Services.CreateScope();
             var context = scope.ServiceProvider.GetRequiredService<StoreContext>();
             var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
+
             try{
                 context.Database.Migrate();
                 DBInitializer.Initialize(context);
@@ -33,6 +34,7 @@ namespace API
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
+                
                 });
     }
 }
